@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <LangVersion>8</LangVersion>
+    <Nullable>enable</Nullable>
+    <VersionPrefix>0.1.0</VersionPrefix>
+    <PackageId>Biz.Morsink.CodeGeneration.CSharp</PackageId>
+    <Authors>Joost W. Morsink</Authors>
+    <Company>Morsink Software</Company>
+    <Description>A fluent API for Roslyn syntax trees for the most common syntax tree construction patterns</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/joost-morsink/Biz.Morsink.CodeGeneration.CSharp</PackageProjectUrl>
+    <Copyright>(C) 2020 Joost W. Morsink</Copyright>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <RepositoryType>Git</RepositoryType>
+    <RepositoryUrl>https://github.com/joost-morsink/Biz.Morsink.CodeGeneration.CSharp.git</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Collections.Immutable" Version="1.7.1" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.6.0" />
+  </ItemGroup>
+</Project>

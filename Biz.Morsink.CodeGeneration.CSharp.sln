@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biz.Morsink.CodeGeneration.CSharp", "Biz.Morsink.CodeGeneration.CSharp\Biz.Morsink.CodeGeneration.CSharp.csproj", "{288318A1-ACF6-496B-86AE-78434B3F1005}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biz.Morsink.CodeGeneration.CSharp.Test", "Biz.Morsink.CodeGeneration.CSharp.Test\Biz.Morsink.CodeGeneration.CSharp.Test.csproj", "{733D7566-72F8-4A89-A87A-BCA8E9FB8EAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{288318A1-ACF6-496B-86AE-78434B3F1005}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{288318A1-ACF6-496B-86AE-78434B3F1005}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{288318A1-ACF6-496B-86AE-78434B3F1005}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{288318A1-ACF6-496B-86AE-78434B3F1005}.Release|Any CPU.Build.0 = Release|Any CPU
+		{733D7566-72F8-4A89-A87A-BCA8E9FB8EAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{733D7566-72F8-4A89-A87A-BCA8E9FB8EAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{733D7566-72F8-4A89-A87A-BCA8E9FB8EAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{733D7566-72F8-4A89-A87A-BCA8E9FB8EAE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
