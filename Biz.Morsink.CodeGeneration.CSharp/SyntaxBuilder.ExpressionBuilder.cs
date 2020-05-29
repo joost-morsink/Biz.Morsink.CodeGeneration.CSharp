@@ -32,9 +32,13 @@ namespace Biz.Morsink.CodeGeneration.CSharp
                 => Create(text);
 
             public ExpressionBuilder Call(string method, params ExpressionBuilder[] expressions)
+                => Call(method, expressions.AsEnumerable());
+            public ExpressionBuilder Call(string method, IEnumerable<ExpressionBuilder> expressions)
                 => new ExpressionBuilder(SF.InvocationExpression(SF.MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression, _expr, SF.IdentifierName(method)),
                     SF.ArgumentList(SF.SeparatedList(expressions.Select(e => SF.Argument(e.Build()))))));
             public ExpressionBuilder Call(string method, IEnumerable<string> typeParameters, params ExpressionBuilder[] expressions)
+                => Call(method, typeParameters, expressions.AsEnumerable());
+            public ExpressionBuilder Call(string method, IEnumerable<string> typeParameters, IEnumerable<ExpressionBuilder> expressions)
                 => new ExpressionBuilder(SF.InvocationExpression(
                     SF.MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression, _expr,
                         SF.GenericName(method).WithTypeArgumentList(SF.TypeArgumentList(SF.SeparatedList(typeParameters.Select(tp => ParseType(tp)))))),
@@ -42,6 +46,8 @@ namespace Biz.Morsink.CodeGeneration.CSharp
             public ExpressionBuilder Member(string member)
                 => new ExpressionBuilder(SF.MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression, _expr, SF.IdentifierName(member)));
             public ExpressionBuilder Invoke(params ExpressionBuilder[] expressions)
+                => Invoke(expressions.AsEnumerable());
+            public ExpressionBuilder Invoke(IEnumerable<ExpressionBuilder> expressions)
                 => new ExpressionBuilder(SF.InvocationExpression(_expr, SF.ArgumentList(SF.SeparatedList(expressions.Select(e => SF.Argument(e.Build()))))));
             public ExpressionBuilder Binary(SyntaxKind kind, ExpressionBuilder right)
                 => new ExpressionBuilder(SF.BinaryExpression(kind, this.Build(), right.Build()));

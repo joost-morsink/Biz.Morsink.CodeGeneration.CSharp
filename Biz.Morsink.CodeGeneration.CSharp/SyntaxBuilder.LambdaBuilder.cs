@@ -1,4 +1,5 @@
-﻿using System.Collections.Immutable;
+﻿using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using SF = Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
@@ -21,6 +22,8 @@ namespace Biz.Morsink.CodeGeneration.CSharp
                 _block = block;
             }
             public static LambdaBuilder Create(params ParameterBuilder[] parameters)
+                => Create(parameters.AsEnumerable());
+            public static LambdaBuilder Create(IEnumerable<ParameterBuilder> parameters)
                 => new LambdaBuilder(parameters.ToImmutableList());
             public LambdaBuilder With(ExpressionBuilder expr)
                 => new LambdaBuilder(_parameters, expr, null);

@@ -63,6 +63,8 @@ namespace Biz.Morsink.CodeGeneration.CSharp
         public static ExpressionBuilder Literal(decimal i) => ExpressionBuilder.Literal(i);
         public static ExpressionBuilder Literal(double i) => ExpressionBuilder.Literal(i);
         public static ExpressionBuilder New(string type, params ExpressionBuilder[] parameters)
+            => New(type, parameters.AsEnumerable());
+        public static ExpressionBuilder New(string type, IEnumerable<ExpressionBuilder> parameters)
             => SF.ObjectCreationExpression(ParseType(type), SF.ArgumentList(SF.SeparatedList(parameters.Select(p => SF.Argument(p.Build())))), null);
         public static ExpressionBuilder Await(ExpressionBuilder expr)
             => SF.AwaitExpression(expr.Build());
@@ -87,8 +89,12 @@ namespace Biz.Morsink.CodeGeneration.CSharp
         public static DoBuilder Do(BlockBuilder block)
             => DoBuilder.Create(block);
         public static LambdaBuilder Lambda(params ParameterBuilder[] parameters)
+            => Lambda(parameters.AsEnumerable());
+        public static LambdaBuilder Lambda(IEnumerable<ParameterBuilder> parameters)
             => LambdaBuilder.Create(parameters);
         public static BlockBuilder Block(params IStatementBuilder[] statements)
+            => Block(statements.AsEnumerable());
+        public static BlockBuilder Block(IEnumerable<IStatementBuilder> statements)
             => BlockBuilder.Create().Add(statements);
     }
 }

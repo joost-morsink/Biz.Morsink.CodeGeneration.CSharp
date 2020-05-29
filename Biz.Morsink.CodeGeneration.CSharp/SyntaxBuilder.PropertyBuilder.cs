@@ -1,4 +1,5 @@
-﻿using System.Collections.Immutable;
+﻿using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using SF = Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
@@ -26,6 +27,8 @@ namespace Biz.Morsink.CodeGeneration.CSharp
             }
 
             public PropertyBuilder Add(params AccessorBuilder[] accessors)
+                => Add(accessors.AsEnumerable());
+            public PropertyBuilder Add(IEnumerable<AccessorBuilder> accessors)
                 => new PropertyBuilder(_modifiers, _type, _name, _accessors.AddRange(accessors));
 
             public PropertyDeclarationSyntax Build()

@@ -1,4 +1,5 @@
-﻿using System.Collections.Immutable;
+﻿using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -37,8 +38,12 @@ namespace Biz.Morsink.CodeGeneration.CSharp
             public MethodBuilder With(BlockBuilder block)
                 => new MethodBuilder(_modifiers, _type, _name, _parameters, _typeParameters, null, block);
             public MethodBuilder AddParameters(params ParameterBuilder[] parameters)
+                => AddParameters(parameters.AsEnumerable());
+            public MethodBuilder AddParameters(IEnumerable<ParameterBuilder> parameters)
                 => new MethodBuilder(_modifiers, _type, _name, _parameters.AddRange(parameters), _typeParameters, _expr, _block);
             public MethodBuilder AddTypeParameters(params string[] parameters)
+                => AddTypeParameters(parameters.AsEnumerable());
+            public MethodBuilder AddTypeParameters(IEnumerable<string> parameters)
                 => new MethodBuilder(_modifiers, _type, _name, _parameters, _typeParameters.AddRange(parameters), _expr, _block);
             public MethodDeclarationSyntax Build()
             {

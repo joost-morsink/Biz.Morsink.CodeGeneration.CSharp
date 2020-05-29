@@ -1,4 +1,5 @@
-﻿using System.Collections.Immutable;
+﻿using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using SF = Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
@@ -18,6 +19,8 @@ namespace Biz.Morsink.CodeGeneration.CSharp
                 _statements = statements;
             }
             public BlockBuilder Add(params IStatementBuilder[] statements)
+                => Add(statements.AsEnumerable());
+            public BlockBuilder Add(IEnumerable<IStatementBuilder> statements)
                 => new BlockBuilder(_statements.AddRange(statements));
 
             public BlockSyntax Build()

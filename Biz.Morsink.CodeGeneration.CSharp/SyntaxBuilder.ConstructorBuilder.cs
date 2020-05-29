@@ -1,4 +1,5 @@
-﻿using System.Collections.Immutable;
+﻿using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -34,13 +35,20 @@ namespace Biz.Morsink.CodeGeneration.CSharp
             public ConstructorBuilder With(BlockBuilder block)
                 => new ConstructorBuilder(_modifiers, _name, _parameters, _init, null, block);
             public ConstructorBuilder AddParameters(params ParameterBuilder[] parameters)
+                => AddParameters(parameters.AsEnumerable());
+            public ConstructorBuilder AddParameters(IEnumerable<ParameterBuilder> parameters)
                 => new ConstructorBuilder(_modifiers, _name, _parameters.AddRange(parameters), _init, _expr, _block);
+
             public ConstructorBuilder CallBase(params ExpressionBuilder[] parameters)
+                => CallBase(parameters.AsEnumerable());
+            public ConstructorBuilder CallBase(IEnumerable<ExpressionBuilder> parameters)
                 => new ConstructorBuilder(_modifiers, _name, _parameters,
                     SF.ConstructorInitializer(SyntaxKind.BaseConstructorInitializer,
                         SF.ArgumentList(SF.SeparatedList(parameters.Select(p => SF.Argument(p.Build()))))),
                     _expr, _block);
             public ConstructorBuilder CallThis(params ExpressionBuilder[] parameters)
+                => CallThis(parameters.AsEnumerable());
+            public ConstructorBuilder CallThis(IEnumerable<ExpressionBuilder> parameters)
                 => new ConstructorBuilder(_modifiers, _name, _parameters,
                     SF.ConstructorInitializer(SyntaxKind.ThisConstructorInitializer,
                         SF.ArgumentList(SF.SeparatedList(parameters.Select(p => SF.Argument(p.Build()))))),

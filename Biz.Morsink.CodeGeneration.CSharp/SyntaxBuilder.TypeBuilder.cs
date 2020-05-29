@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -36,8 +37,12 @@ namespace Biz.Morsink.CodeGeneration.CSharp
             }
 
             public TypeBuilder Add(params IMemberBuilder[] builders)
+                => Add(builders.AsEnumerable());
+            public TypeBuilder Add(IEnumerable<IMemberBuilder> builders)
                 => new TypeBuilder(_kind, _modifiers, _name, _members.AddRange(builders), _generics);
             public TypeBuilder WithGenerics(params GenericDeclarationBuilder[] generics)
+                => WithGenerics(generics.AsEnumerable());
+            public TypeBuilder WithGenerics(IEnumerable<GenericDeclarationBuilder> generics)
                 => new TypeBuilder(_kind, _modifiers, _name, _members, _generics.AddRange(generics));
             public TypeDeclarationSyntax Build()
             {
