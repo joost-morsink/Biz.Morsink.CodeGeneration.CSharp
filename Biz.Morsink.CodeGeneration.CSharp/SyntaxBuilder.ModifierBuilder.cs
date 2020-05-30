@@ -23,6 +23,7 @@ namespace Biz.Morsink.CodeGeneration.CSharp
             public ModifierBuilder Internal() => new ModifierBuilder(_modifiers.Add(SF.Token(SyntaxKind.InternalKeyword)));
             public ModifierBuilder Partial() => new ModifierBuilder(_modifiers.Add(SF.Token(SyntaxKind.PartialKeyword)));
             public ModifierBuilder Static() => new ModifierBuilder(_modifiers.Add(SF.Token(SyntaxKind.StaticKeyword)));
+            public ModifierBuilder Abstract() => new ModifierBuilder(_modifiers.Add(SF.Token(SyntaxKind.AbstractKeyword)));
             public ModifierBuilder Virtual() => new ModifierBuilder(_modifiers.Add(SF.Token(SyntaxKind.VirtualKeyword)));
             public ModifierBuilder Override() => new ModifierBuilder(_modifiers.Add(SF.Token(SyntaxKind.OverrideKeyword)));
             public ModifierBuilder New() => new ModifierBuilder(_modifiers.Add(SF.Token(SyntaxKind.NewKeyword)));

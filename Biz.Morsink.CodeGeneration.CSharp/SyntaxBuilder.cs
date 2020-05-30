@@ -42,6 +42,7 @@ namespace Biz.Morsink.CodeGeneration.CSharp
         public static ModifierBuilder Internal() => ModifierBuilder.Create().Internal();
         public static ModifierBuilder Partial() => ModifierBuilder.Create().Partial();
         public static ModifierBuilder Static() => ModifierBuilder.Create().Static();
+        public static ModifierBuilder Abstract() => ModifierBuilder.Create().Abstract();
         public static ModifierBuilder Virtual() => ModifierBuilder.Create().Virtual();
         public static ModifierBuilder Override() => ModifierBuilder.Create().Override();
         public static ModifierBuilder New() => ModifierBuilder.Create().New();
